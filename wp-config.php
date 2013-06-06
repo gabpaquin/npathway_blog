@@ -25,7 +25,9 @@ define('DB_USER', 'b9c59b74ef2ab2');
 define('DB_PASSWORD', 'a7b5b1a1');
 
 /** MySQL hostname */
-define('DB_HOST', 'ap-cdbr-azure-east-a.cloudapp.net');
+#define('DB_HOST', 'ap-cdbr-azure-east-a.cloudapp.net');
+define('DB_HOST', 'blog.npathway.dev:/tmp/mysql.sock');
+
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
