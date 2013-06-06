@@ -62,7 +62,7 @@ $firmasite_settings["styles"] = apply_filters( 'firmasite_theme_styles', array(
 			"united" => esc_attr__( 'United', 'firmasite' ),	//12
 		));
 		
-$firmasite_styles_url_default = get_template_directory_uri() . '/assets/themes/';
+$firmasite_styles_url_default = get_template_directory() . '/assets/themes/';
 $firmasite_settings["styles_url"] = apply_filters( 'firmasite_theme_styles_url', array(		
 			"default" => $firmasite_styles_url_default. "default",	//0
 			"amelia" => $firmasite_styles_url_default. "amelia",	//1

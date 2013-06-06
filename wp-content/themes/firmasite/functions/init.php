@@ -143,11 +143,11 @@ function firmasite_enqueue_script() {
  	if (isset($firmasite_settings["no-responsive"]) && !empty($firmasite_settings["no-responsive"])) {
 	} else {
 		// bootstrap-responsive-css
-		wp_register_style( 'bootstrap-responsive', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap-responsive.css' );
+		wp_register_style( 'bootstrap-responsive', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap-responsive.min.css' );
 		wp_enqueue_style( 'bootstrap-responsive' );
 	}
 	// style
-	wp_register_style( 'style', get_template_directory() . '/style.css' );
+	wp_register_style( 'style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'style' );
 	
 	// bootstrap-js

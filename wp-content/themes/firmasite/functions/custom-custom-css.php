@@ -1,140 +1,87 @@
 <?php
+/*
+I was calling theme settings in functions.php and was calling settings as global variable in theme files. 
+This was working properly except temporary changes was disappearing in theme customizer"s live edit when you change page with clicking links.
+This file fixes that.
+Read if you want more details: http://wordpress.stackexchange.com/questions/82723/theme-customizer-changes-are-dissappearing-when-change-page
+*/
 
-add_action( 'after_setup_theme', "firmasite_customcss_setup");
-function firmasite_customcss_setup(){
-	add_action( 'customize_register', "firmasite_customcss_register");
-	function firmasite_customcss_register($wp_customize) {
-		global $firmasite_settings,$firmasite_settings_desc;
-	
-			// CustomCss Option
-			$wp_customize->add_setting( 'firmasite_settings[customcss]', array(
-				'type'              => 'option',
-				'sanitize_callback' => 'firmasite_sanitize_customcss',
-			) );
-			$wp_customize->add_control( new Firmasite_Customize_CustomCss_Control( $wp_customize,'firmasite_settings[customcss]', array(
-				'label'    => esc_attr__( 'Custom Css', 'firmasite' ),
-				'type' => 'customcss',
-				'section'  => 'theme-settings',			
-				//'priority' => '3',
-			) ) );			
-				// Adding explanation for setting
-				$firmasite_settings_desc["customcss"]['content'] = esc_attr__( "You can change your site's appearance with custom css but if you are not sure what you doing, please ask for support", 'firmasite' ); 
-				$firmasite_settings_desc["customcss"]['title'] =  esc_attr__('Be Careful!', 'firmasite' ); ; 
-	}
+global $firmasite_settings;
+$firmasite_settings = get_option( "firmasite_settings" ); // site options
 
-	// Options loading
-	global $firmasite_settings;
-	if(isset($firmasite_settings["customcss"]) && !empty($firmasite_settings["customcss"])) {
+do_action("firmasite_settings_open");
 
-		// Custom Css
-		add_action( 'wp_head', "firmasite_customcss_css" ,999 );
-		function firmasite_customcss_css(){
-			global $firmasite_settings;
-		?>
-			<style id="custom-custom-css" type="text/css" media="screen">
-			<?php echo $firmasite_settings["customcss"]; ?>
-			</style>
-		<?php
-		}
-		
-		// Custom Css to wpeditor.php
-		add_action( 'firmasite_wpeditor_style', "firmasite_customcss_wpeditor" ,999 );
-		function firmasite_customcss_wpeditor(){
-			global $firmasite_settings;
-			 echo $firmasite_settings["customcss"];
-		}
-		
-	}
+if(!isset($firmasite_settings["style"]) || empty($firmasite_settings["style"]))	$firmasite_settings["style"] = "united";
+if(!isset($firmasite_settings["layout"]) || empty($firmasite_settings["layout"])) $firmasite_settings["layout"] = "content-sidebar";
+
+switch ($firmasite_settings["layout"]) {
+    case "sidebar-content":
+		$firmasite_settings["layout_primary_class"] = "span10 pull-right";
+ 		$firmasite_settings["layout_primary_fullwidth_class"] = "span12";
+		$firmasite_settings["layout_secondary_class"] = "span2";		
+		$firmasite_settings["layout_container_class"] = "container";		
+ 		$firmasite_settings["layout_page_class"] = "";		
+      break;
+    case "only-content":
+ 		$firmasite_settings["layout_primary_class"] = "span12";
+ 		$firmasite_settings["layout_primary_fullwidth_class"] = "span12";
+		$firmasite_settings["layout_secondary_class"] = "hide";		
+		$firmasite_settings["layout_container_class"] = "container";		
+ 		$firmasite_settings["layout_page_class"] = "site-only-content";		
+      break;
+    case "only-content-long":
+ 		$firmasite_settings["layout_primary_class"] = "span12";
+ 		$firmasite_settings["layout_primary_fullwidth_class"] = "span12";
+		$firmasite_settings["layout_secondary_class"] = "hide";		
+		$firmasite_settings["layout_container_class"] = "container";		
+ 		$firmasite_settings["layout_page_class"] = "site-only-content-long";		
+      break;
+	default:
+    case "content-sidebar":
+ 		$firmasite_settings["layout_primary_class"] = "span8";
+ 		$firmasite_settings["layout_primary_fullwidth_class"] = "span12";
+		$firmasite_settings["layout_secondary_class"] = "span4";		
+		$firmasite_settings["layout_container_class"] = "container";		
+ 		$firmasite_settings["layout_page_class"] = "";		
+       break;	
 }
 
-
-function firmasite_sanitize_customcss( $css ) {
-	
-	// Sadly we cant include csstidy. WordPress Theme Directory's automatic code checking system is not accepting it.
-	// You have 2 option for including css checker: install jetpack and activate custom css or copy csstidy's folder to theme's functions folder from jetpack's plugin
-		firmasite_safecss_class();
-	if ( class_exists('safecss') || class_exists('firmasite_safecss') ) {
-		$csstidy = new csstidy();
-		if ( class_exists('firmasite_safecss') ){ 
-			$csstidy->optimise = new firmasite_safecss( $csstidy );
-		} else {
-			$csstidy->optimise = new safecss( $csstidy );
-		}
-	
-	
-		$csstidy->set_cfg( 'remove_bslash',              false );
-		$csstidy->set_cfg( 'compress_colors',            false );
-		$csstidy->set_cfg( 'compress_font-weight',       false );
-		$csstidy->set_cfg( 'optimise_shorthands',        0 );
-		$csstidy->set_cfg( 'remove_last_;',              false );
-		$csstidy->set_cfg( 'case_properties',            false );
-		$csstidy->set_cfg( 'discard_invalid_properties', true );
-		$csstidy->set_cfg( 'css_level',                  'CSS3.0' );
-		$csstidy->set_cfg( 'preserve_css',               true );
-		$csstidy->set_cfg( 'template',                   dirname( __FILE__ ) . '/csstidy/wordpress-standard.tpl' );
-	
-		$css = stripslashes( $css );
+$firmasite_settings["styles"] = apply_filters( 'firmasite_theme_styles', array(
+			"default" => esc_attr__( 'Default', 'firmasite' ),	//0
+			"amelia" => esc_attr__( 'Amelia', 'firmasite' ),	//1
+			"cerulean" => esc_attr__( 'Cerulean', 'firmasite' ),	//2
+			"cosmo" => esc_attr__( 'Cosmo', 'firmasite' ),	//3
+			"cyborg" => esc_attr__( 'Cyborg', 'firmasite' ),	//4
+			"journal" => esc_attr__( 'Journal', 'firmasite' ),	//5
+			"readable" => esc_attr__( 'Readable', 'firmasite' ),	//6
+			"simplex" => esc_attr__( 'Simplex', 'firmasite' ),	//7
+			"slate" => esc_attr__( 'Slate', 'firmasite' ),	//8
+			"spacelab" => esc_attr__( 'Spacelab', 'firmasite' ),	//9
+			"spruce" => esc_attr__( 'Spruce', 'firmasite' ),	//10
+			"superhero" => esc_attr__( 'Superhero', 'firmasite' ),//11
+			"united" => esc_attr__( 'United', 'firmasite' ),	//12
+		));
 		
-		// Some people put weird stuff in their CSS, KSES tends to be greedy
-		$css = str_replace( '<=', '&lt;=', $css );
-		// Why KSES instead of strip_tags?  Who knows?
-		$css = wp_kses_split( $prev = $css, array(), array() );
-		$css = str_replace( '&gt;', '>', $css ); // kses replaces lone '>' with &gt;
-		// Why both KSES and strip_tags?  Because we just added some '>'.
-		$css = strip_tags( $css );
-	
-		$csstidy->parse( $css );
-	
-	
-		$safe_css = $csstidy->print->plain();	
-	} else {
-		$safe_css = $css;
-	}
-	
-	return $safe_css;
-}
+$firmasite_styles_url_default = get_template_directory_uri() . '/assets/themes/';
+$firmasite_settings["styles_url"] = apply_filters( 'firmasite_theme_styles_url', array(		
+			"default" => $firmasite_styles_url_default. "default",	//0
+			"amelia" => $firmasite_styles_url_default. "amelia",	//1
+			"cerulean" => $firmasite_styles_url_default. "cerulean",	//2
+			"cosmo" => $firmasite_styles_url_default. "cosmo",	//3
+			"cyborg" => $firmasite_styles_url_default. "cyborg",	//4
+			"journal" => $firmasite_styles_url_default. "journal",	//5
+			"readable" => $firmasite_styles_url_default. "readable",	//6
+			"simplex" => $firmasite_styles_url_default. "simplex",	//7
+			"slate" => $firmasite_styles_url_default. "slate",	//8
+			"spacelab" => $firmasite_styles_url_default. "spacelab",	//9
+			"spruce" => $firmasite_styles_url_default. "spruce",	//10
+			"superhero" => $firmasite_styles_url_default. "superhero",//11
+			"united" => $firmasite_styles_url_default. "united",	//12
+		));
 
-function firmasite_safecss_class() {
-	// Wrapped so we don't need the parent class just to load the plugin
-	if ( class_exists('safecss') )
-		return;
-		
-	if (file_exists(dirname( __FILE__ ) . '/csstidy/class.csstidy.php')){
-		require_once( dirname( __FILE__ ) . '/csstidy/class.csstidy.php' );
-	} else {
-		return;
-	}
 
-	class firmasite_safecss extends csstidy_optimise {
-		function safecss( &$css ) {
-			return $this->csstidy_optimise( $css );
-		}
+do_action("firmasite_settings_close");
 
-		function postparse() {
-			do_action( 'csstidy_optimize_postparse', $this );
+apply_filters( 'firmasite_settings_filter', $firmasite_settings );
 
-			return parent::postparse();
-		}
 
-		function subvalue() {
-			do_action( 'csstidy_optimize_subvalue', $this );
-
-			return parent::subvalue();
-		}
-	}
-}
-
-if (class_exists("WP_Customize_Control")){
-	class Firmasite_Customize_CustomCss_Control extends WP_Customize_Control {
-		public $type = 'customcss';
-	 
-		public function render_content() {
-			?>
-			<label>
-			<span class="customize-control-title pull-left"><?php echo esc_html( $this->label ); ?></span>
-			<textarea rows="15" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-			</label>
-			<?php
-		}
-	}
-}
