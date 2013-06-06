@@ -7,7 +7,7 @@ function firmasite_social_buddypress_setup() {
 	add_theme_support( 'buddypress' );
 
 	// Load the AJAX functions for the theme
-	require( get_template_directory() . '/assets/_inc/ajax.php' );
+	require( get_stylesheet_directory_uri() . '/assets/_inc/ajax.php' );
 
 	if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 		// Register buttons for the relevant component templates

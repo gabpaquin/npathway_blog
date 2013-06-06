@@ -36,7 +36,7 @@ function firmasite_customizer_admin_menulink() {
 // Register js for customizer panel
 add_action( 'customize_preview_init', "firmasite_customizer_preview_init");
 function firmasite_customizer_preview_init() {
-	include ( get_template_directory() . '/functions/customizer-call.php');			// Customizer functions
+	include ( get_stylesheet_directory_uri() . '/functions/customizer-call.php');			// Customizer functions
 	wp_enqueue_script( 'firmasite_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ) );
 	
 	wp_localize_script( 'firmasite_customizer', 'styles_url', $firmasite_settings["styles_url"] );

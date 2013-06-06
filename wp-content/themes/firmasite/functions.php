@@ -23,5 +23,5 @@ if ( !defined('FIRMASITE_SHOWCASE_POST') )
 
 
 /* DONT REMOVE THIS LINE */
-include ( get_template_directory() . '/functions/customizer-call.php');			// Customizer functions
-require_once ( get_template_directory() . '/functions/init.php');	// Initial theme setup and constants
+include ( get_stylesheet_directory_uri() . '/functions/customizer-call.php');			// Customizer functions
+require_once ( get_stylesheet_directory_uri() . '/functions/init.php');	// Initial theme setup and constants

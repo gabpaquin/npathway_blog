@@ -4,9 +4,9 @@
  */
  
 if ( class_exists( 'bbPress' ) ) 
-	require_once ( get_template_directory() . '/functions/bbpress.php');	// bbPress changes
+	require_once ( get_stylesheet_directory_uri() . '/functions/bbpress.php');	// bbPress changes
 if ( class_exists( 'BuddyPress' ) ) 		
-	require_once ( get_template_directory() . '/functions/buddypress.php');	// BuddyPress changes
+	require_once ( get_stylesheet_directory_uri() . '/functions/buddypress.php');	// BuddyPress changes
 
 if ( class_exists( 'bbPress' ) || class_exists( 'BuddyPress' ) ) 
 	add_action( 'wp_footer', "firmasite_social_footer_scripts");

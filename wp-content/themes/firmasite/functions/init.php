@@ -15,7 +15,7 @@ add_action('after_setup_theme', "firmasite_setup" );
 function firmasite_setup() {
 
   // Make theme available for translation
-  load_theme_textdomain( 'firmasite', get_template_directory() . '/languages');
+  load_theme_textdomain( 'firmasite', get_stylesheet_directory_uri() . '/languages');
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
@@ -174,17 +174,17 @@ function firmasite_enqueue_script() {
  * @package firmasite
  */
 
-require_once ( get_template_directory() . '/functions/nav.php');					// Custom nav modifications
-require_once ( get_template_directory() . '/functions/customizer.php');			// Customizer
-require_once ( get_template_directory() . '/functions/template-tags.php');			// Customizer
+require_once ( get_stylesheet_directory_uri() . '/functions/nav.php');					// Custom nav modifications
+require_once ( get_stylesheet_directory_uri() . '/functions/customizer.php');			// Customizer
+require_once ( get_stylesheet_directory_uri() . '/functions/template-tags.php');			// Customizer
 
 /**
  * Custom Functions
  *
  */
-require_once ( get_template_directory() . '/functions/fix.php');			// Little fix Functions
-require_once ( get_template_directory() . '/functions/showcase.php');				// showcase
-require_once ( get_template_directory() . '/functions/promotionbar.php');			// Tanıtım Barı
+require_once ( get_stylesheet_directory_uri() . '/functions/fix.php');			// Little fix Functions
+require_once ( get_stylesheet_directory_uri() . '/functions/showcase.php');				// showcase
+require_once ( get_stylesheet_directory_uri() . '/functions/promotionbar.php');			// Tanıtım Barı
 
 
 // Sadly we cant include csstidy. WordPress Theme Directory's automatic code checking system is not accepting it.
@@ -192,8 +192,8 @@ require_once ( get_template_directory() . '/functions/promotionbar.php');			// T
 // 1: install jetpack and activate custom css or
 // 2: install firmasite theme enhancer plugin
 // You should remove "if ( class_exists('safecss') )" from file below when you copy files
-require_once ( get_template_directory() . '/functions/custom-custom-css.php');	// Custom Css.		
-require_once ( get_template_directory() . '/functions/shortcodes.php');			// Shortcodes
-require_once ( get_template_directory() . '/functions/plugins.php');			// Buddypress + bbPress
+require_once ( get_stylesheet_directory_uri() . '/functions/custom-custom-css.php');	// Custom Css.		
+require_once ( get_stylesheet_directory_uri() . '/functions/shortcodes.php');			// Shortcodes
+require_once ( get_stylesheet_directory_uri() . '/functions/plugins.php');			// Buddypress + bbPress
 
 
