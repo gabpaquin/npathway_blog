@@ -35,11 +35,7 @@ global $firmasite_settings;
 				  </div>
 				</div>    <!-- .site-navigation .main-navigation --> 
 			<?php endif; ?>
-			<?php do_action( 'close_footer' ); ?>
-             <?php if(FIRMASITE_POWEREDBY) { ?>
-			 <small class="muted generator"><a href="<?php echo esc_url( __( 'http://wordpress.org/', 'firmasite' ) ); ?>" title="<?php printf( esc_attr__( 'Proudly powered by %s', 'firmasite' ), 'WordPress' ); ?>"><div id="wplogo"></div></a></small>
-             <?php } ?>
-			 <small class="muted designer"><?php _e("Theme:","firmasite"); ?> <a href="//firmasite.com/" rel="designer">FirmaSite</a></small>
+			<!-- footer info goes here -->
 		</div><!-- .site-info -->
 	</footer><!-- #colophon .site-footer -->
 </div><!-- #page .hfeed .site -->

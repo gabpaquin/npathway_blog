@@ -68,4 +68,4 @@ global $firmasite_settings;
     
 	<div id="main" class="site-main <?php echo $firmasite_settings["layout_container_class"]; ?>">
         	<?php do_action( 'before_content' ); ?>    
-        <div class="row-fluid">
+        <div class="row">

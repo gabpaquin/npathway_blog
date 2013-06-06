@@ -85,14 +85,12 @@ input[type="text"] { height:auto; }
 only-content = .row .span8
 */
 .site-only-content .container { max-width: 620px; }
-@media (min-width: 1200px) { .site-only-content .container { max-width: 770px; } }
 @media (min-width: 768px) and (max-width: 979px) { .site-only-content .container { max-width: 476px; } }
 
 /* only-content-long layout 
 only-content-long = .row .span12
 */
 .site-only-content-long .container { max-width: 940px; }
-@media (min-width: 1200px) { .site-only-content-long .container { max-width: 1170px; } }
 @media (min-width: 768px) and (max-width: 979px) { .site-only-content-long .container { max-width: 724px; } }
 
 
@@ -245,3 +243,8 @@ only-content-long = .row .span12
 .browser_ie .bbp-topics .bbp-author-avatar img { width: 14px; height:auto; max-width:none; }
 .browser_ie .bbp-forums .bbp-author-avatar img { width: 14px; height:auto; max-width:none; }
 .browser_ie .firmasite-modal-static .modal-footer { text-align: left; }
+
+
+
+/* CUSTOM */
+
