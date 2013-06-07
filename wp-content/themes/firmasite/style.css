@@ -245,6 +245,52 @@ only-content-long = .row .span12
 .browser_ie .firmasite-modal-static .modal-footer { text-align: left; }
 
 
-
 /* CUSTOM */
+.page-header {
+  border-bottom: 0px;
+}
 
+#primary {
+  border-top: 4px solid #035197;
+}
+
+#secondary {
+  border-top: 4px solid #5f95be;
+  padding-top: 30px;
+}
+.inner-secondary {
+  width: 100%;
+  margin: 0px 0px 10px 0px;
+  border: 1px solid #b3b7b8;
+}
+
+#secondary ul, #secondary li {
+  list-style: none;
+}
+#secondary ul {
+  margin: 0px 0px 10px 12px;
+}
+#secondary li {
+  background: #EAEAEA;
+}
+
+#secondary h4 {
+  font-size: 14px;
+  width: auto;
+  text-align: left;
+  display: block;
+  padding: 6px;
+  margin: 0;
+  border-bottom: 1px solid #b3b7b8;
+  background: #5f95be;
+  color: white;
+  font-weight: bold;
+}
+
+#secondary a {
+  width: auto;
+  text-align: left;
+  color: #5f95be;
+  display: block;
+  padding: 6px;
+}

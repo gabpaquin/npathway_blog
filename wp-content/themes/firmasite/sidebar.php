@@ -5,6 +5,7 @@
 global $firmasite_settings;
 ?>
 <div id="secondary" class="widget-area clearfix <?php echo $firmasite_settings["layout_secondary_class"]; ?>" role="complementary">
+    <div class='inner-secondary'>
     <?php do_action( 'open_sidebar' ); ?>
     <?php if ( ! dynamic_sidebar( 'site-sidebar' ) ) : ?>
 
@@ -26,4 +27,5 @@ global $firmasite_settings;
 
     <?php endif; // end sidebar widget area ?>
     <?php do_action( 'close_sidebar' ); ?>
+    </div>
 </div><!-- #secondary .widget-area -->
