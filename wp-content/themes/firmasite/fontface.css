@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'glegoo-regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/glegoo-regular.eot?');
+  src: local('※'),
+     url('./fonts/glegoo-regular.woff') format('woff'),
+     url('./fonts/glegoo-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'karla-bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/karla-bold.eot');
+  src: local('※'),
+     url('./fonts/karla-bold.woff') format('woff'),
+     url('./fonts/karla-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'karla-bolditalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/karla-bolditalic.eot?');
+  src: local('※'),
+     url('./fonts/karla-bolditalic.woff') format('woff'),
+     url('./fonts/karla-bolditalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'karla-italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/karla-italic.eot?');
+  src: local('※'),
+     url('./fonts/karla-italic.woff') format('woff'),
+     url('./fonts/karla-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'karla-regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/karla-regular.eot?');
+  src: local('※'),
+     url('./fonts/karla-regular.woff') format('woff'),
+     url('./fonts/karla-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'reeniebeanie';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/reeniebeanie.eot?');
+  src: local('※'),
+     url('./fonts/reeniebeanie.woff') format('woff'),
+     url('./fonts/reeniebeanie.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'simhei_5';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/simhei_5.eot?');
+  src: local('※'),
+     url('./fonts/simhei_5.woff') format('woff'),
+     url('./fonts/simhei_5.ttf') format('truetype');
+}
