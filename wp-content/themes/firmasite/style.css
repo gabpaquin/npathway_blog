@@ -256,7 +256,6 @@ only-content-long = .row .span12
 
 #primary {
   font-family: karla-regular, Arial;
-  padding-left: 3%;
 }
 
 #secondary {
@@ -338,10 +337,8 @@ h3{
 }
 
 h4{
-  font-size: 32px;
-  line-height: 1.2em;
+  font-size: 20px;
   font-family: karla-bold, STHeiti, Arial;
-  line-height: 22px;
   margin: 0 0 30px 0;
   color: #005098;
 }
@@ -405,7 +402,20 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 25px;
 }
 
+#primary article {
+  margin-left: 3%;
+}
+#primary h4.entry-title{
+  font-size: 32px;  
+  line-height: 1.2em;
+  font-family: karla-bold, STHeiti, Arial;
+  line-height: 22px;
+  margin: 0 0 30px 0;
+  color: #005098;
+}
+
 #primary article:first-of-type {
-  margin-top: 20px;
+  margin-top: 0px;
   border-top: 4px solid #035197;
+  padding-top: 30px;
 }
