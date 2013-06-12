@@ -16,9 +16,9 @@ if(!isset($firmasite_settings["layout"]) || empty($firmasite_settings["layout"])
 
 switch ($firmasite_settings["layout"]) {
     case "sidebar-content":
-		$firmasite_settings["layout_primary_class"] = "span10 pull-right";
+		$firmasite_settings["layout_primary_class"] = "span9 pull-right";
  		$firmasite_settings["layout_primary_fullwidth_class"] = "span12";
-		$firmasite_settings["layout_secondary_class"] = "span2";		
+		$firmasite_settings["layout_secondary_class"] = "span3";		
 		$firmasite_settings["layout_container_class"] = "container";		
  		$firmasite_settings["layout_page_class"] = "";		
       break;
