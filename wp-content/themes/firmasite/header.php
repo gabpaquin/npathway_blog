@@ -35,7 +35,7 @@ global $firmasite_settings;
             <div class="page-header">
               <!-- <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body"> --> 
               <?php if (qtrans_getLanguage() == "zh") { ?>
-                <a href="http://www.npathway.com/cn" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
+                <a href="http://www.npathway.com/zh" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
               <?php } else { ?>
                 <a href="http://www.npathway.com/en" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
               <?php } ?>           
