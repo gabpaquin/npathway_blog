@@ -32,22 +32,49 @@ global $firmasite_settings;
     
   <header id="masthead" class="site-header" role="banner">
       <div id="logo" class="<?php echo $firmasite_settings["layout_container_class"]; ?>">        
-            <div class="page-header">
-              <!-- <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body"> --> 
               <?php if (qtrans_getLanguage() == "zh") { ?>
-                <a href="http://www.npathway.com/zh" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
+                <div class="page-header">
+                  <a href="http://www.npathway.com/zh" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
+                    <?php if (isset($firmasite_settings["logo"]) && !empty($firmasite_settings["logo"])) {?>
+                      <img src="<?php echo $firmasite_settings["logo"];?>" alt="<?php bloginfo( 'description' ); ?>" title="<?php bloginfo( 'name' ); ?>" id="logo-img" />
+                     <?php } else {?>
+                      <span class="badge badge-info logo-text pull-left"><?php bloginfo( 'name' ); ?></span>
+                    <?php }?>
+                  </a>
+                  <div id="qr_code">
+                    <img src="/wp-content/themes/firmasite/assets/img/bt_wechat.png" alt="">
+                    <div class="p2">
+                      关注
+                    <br>
+                      我们的微信
+                    </div>
+                  </div>
+                  <?php if (get_bloginfo( 'description' )) {?>
+                    <span class="muted well well-small pull-right"><?php bloginfo( 'description' ); ?></span>
+                  <?php } ?>
+               </div>
               <?php } else { ?>
-                <a href="http://www.npathway.com/en" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
-              <?php } ?>           
-              <?php if (isset($firmasite_settings["logo"]) && !empty($firmasite_settings["logo"])) {?>
-                <img src="<?php echo $firmasite_settings["logo"];?>" alt="<?php bloginfo( 'description' ); ?>" title="<?php bloginfo( 'name' ); ?>" id="logo-img" />
-                 <?php } else {?>
-                <span class="badge badge-info logo-text pull-left"><?php bloginfo( 'name' ); ?></span>
-                <?php }?>
-            </a>
-           <?php if (get_bloginfo( 'description' )) {?>
-           <span class="muted well well-small pull-right"><?php bloginfo( 'description' ); ?></span>
-           <?php } ?>
+                <div class="page-header">
+                  <a href="http://www.npathway.com/en" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" id="logo-link" class="logo" data-section="body">
+                    <?php if (isset($firmasite_settings["logo"]) && !empty($firmasite_settings["logo"])) {?>
+                      <img src="<?php echo $firmasite_settings["logo"];?>" alt="<?php bloginfo( 'description' ); ?>" title="<?php bloginfo( 'name' ); ?>" id="logo-img" />
+                     <?php } else {?>
+                      <span class="badge badge-info logo-text pull-left"><?php bloginfo( 'name' ); ?></span>
+                    <?php }?>
+                  </a>
+                  <div id="qr_code">
+                    <img src="/wp-content/themes/firmasite/assets/img/bt_wechat.png" alt="">
+                    <div class="p2">
+                      Join Our
+                    <br>
+                      WeChat!
+                    </div>
+                  </div>
+                  <?php if (get_bloginfo( 'description' )) {?>
+                    <span class="muted well well-small pull-right"><?php bloginfo( 'description' ); ?></span>
+                  <?php } ?>
+                </div>
+              <?php } ?> <!-- end qtrans_getLanguage -->          
            </div>
         </div>
    <?php if (has_nav_menu('main_menu')) : ?>
