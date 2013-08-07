@@ -25,3 +25,37 @@ if ( !defined('FIRMASITE_SHOWCASE_POST') )
 /* DONT REMOVE THIS LINE */
 include ( get_template_directory() . '/functions/customizer-call.php');     // Customizer functions
 require_once ( get_template_directory() . '/functions/init.php'); // Initial theme setup and constants
+
+// Fix for qTranslate plugin and "Home" menu link reverting back to default language
+
+if (function_exists('qtrans_convertURL')) {
+
+function qtrans_in_nav_el($output, $item, $depth, $args) {
+
+$attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+
+$attributes .=!empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+
+$attributes .=!empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+
+// Integration with qTranslate Plugin
+
+$attributes .=!empty($item->url) ? ' href="' . esc_attr( qtrans_convertURL($item->url) ) . '"' : '';
+
+$output = $args->before;
+
+$output .= '<a' . $attributes . '>';
+
+$output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+
+$output .= '</a>';
+
+$output .= $args->after;
+
+return $output;
+
+}
+
+add_filter('walker_nav_menu_start_el', 'qtrans_in_nav_el', 10, 4);
+
+}
