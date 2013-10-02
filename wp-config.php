@@ -19,12 +19,15 @@
 define('DB_NAME', 'npathwaAokgucQha');
 
 /** MySQL database username */
-define('DB_USER', 'b9c59b74ef2ab2');
+// define('DB_USER', 'b9c59b74ef2ab2');
+define('DB_USER', 'bdb92da448e012');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'a7b5b1a1');
+// define('DB_PASSWORD', 'a7b5b1a1');
+define('DB_PASSWORD', 'b135f7a4');
 
 /** MySQL hostname */
+// define('DB_HOST', 'ap-cdbr-azure-east-b.cloudapp.net');
 define('DB_HOST', 'ap-cdbr-azure-east-a.cloudapp.net');
 #define('DB_HOST', 'blog.npathway.dev:/tmp/mysql.sock');
 
