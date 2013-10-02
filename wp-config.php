@@ -27,8 +27,8 @@ define('DB_USER', 'bdb92da448e012');
 define('DB_PASSWORD', 'b135f7a4');
 
 /** MySQL hostname */
-// define('DB_HOST', 'ap-cdbr-azure-east-b.cloudapp.net');
-define('DB_HOST', 'ap-cdbr-azure-east-a.cloudapp.net');
+// define('DB_HOST', 'ap-cdbr-azure-east-a.cloudapp.net');
+define('DB_HOST', 'ap-cdbr-azure-east-b.cloudapp.net');
 #define('DB_HOST', 'blog.npathway.dev:/tmp/mysql.sock');
 
 
