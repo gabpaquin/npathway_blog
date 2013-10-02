@@ -50,7 +50,7 @@ global $firmasite_settings;
                     </div>
                   </div>
                   <?php if (get_bloginfo( 'description' )) {?>
-                    <span class="muted well well-small pull-right"><?php bloginfo( 'description' ); ?></span>
+                    <span class="muted well well-small pull-right hidden"><?php bloginfo( 'description' ); ?></span>
                   <?php } ?>
                </div>
               <?php } else { ?>
@@ -71,7 +71,7 @@ global $firmasite_settings;
                     </div>
                   </div>
                   <?php if (get_bloginfo( 'description' )) {?>
-                    <span class="muted well well-small pull-right"><?php bloginfo( 'description' ); ?></span>
+                    <span class="muted well well-small pull-right hidden"><?php bloginfo( 'description' ); ?></span>
                   <?php } ?>
                 </div>
               <?php } ?> <!-- end qtrans_getLanguage -->          
